@@ -16,7 +16,11 @@ mongoose.connect(process.env.MONGOOSE, {
     console.log('failed to connect db')
 })
 
-app.use(cors())
+const corsOption = {
+    //ganti sesuai alamat web front end mu
+    origin: 'https://votify.netlify.app'
+}
+app.use(cors(corsOption))
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 

@@ -20,7 +20,9 @@ router.get('/vote/:id', isAuth, async(req,res)=>{
     try{
         const dataVote = await Voting.findOne({_id: req.params.id})
         if(dataVote){
-            res.json(dataVote)
+            res.json({success: true, dataVote})
+        }else{
+            res.json({success:false, msg: 'Oops.. data tidak ditemukan'})
         }
     }catch(err){
         res.json({success:false, msg: 'Oops.. data tidak ditemukan'})
