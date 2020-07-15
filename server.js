@@ -6,6 +6,8 @@ require('dotenv').config()
 const mongoose = require('mongoose')
 const cors = require('cors')
 
+app.use(cors())
+
 mongoose.connect(process.env.MONGOOSE, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -16,11 +18,7 @@ mongoose.connect(process.env.MONGOOSE, {
     console.log('failed to connect db')
 })
 
-const corsOption = {
-    //ganti sesuai alamat web front end mu
-    origin: 'https://votify.netlify.app'
-}
-app.use(cors(corsOption))
+
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 

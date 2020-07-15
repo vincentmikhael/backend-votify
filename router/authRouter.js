@@ -18,10 +18,10 @@ router.get('/', isAuth, async (req,res)=>{
         res.json({succes: false, msg: 'Ups, user yang anda cari tidak ada'})
 
     }
-    
 })
 
 router.get('/profile', isAuth, async (req,res)=>{
+
     try{
         const user = await User.findById(req.user)
         if(user){
@@ -71,6 +71,7 @@ router.post('/register', async (req,res)=>{
 })
 
 router.post('/login', async (req,res)=>{
+
 
     const Schema = Joi.object({
         email: Joi. string().trim().email().max(100).required(),
