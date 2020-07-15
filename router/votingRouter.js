@@ -83,13 +83,7 @@ router.post('/vote/:votingId', async (req,res)=>{
     const macUser = await address.mac(function (err, addr) {
         return addr
       })
-      const user = await Voting.findById(req.params.votingId)
-      const duplicateMac = user.vote.filter(e =>{
-        return e.mac === macUser
-      })
-      if(duplicateMac.length){
-          return res.json({success: false, msg: 'Ups.. sepertinya kamu sudah melakukan voting'})
-      }
+
       
     const userChoice = {
         name: req.body.name,
